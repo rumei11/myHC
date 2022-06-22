@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 题目来源
+    // leetcode: 773
+
+    //描述： 给定一个数 求二个数的二进制中不同位的个数
+
+    /**
+     *异或求二数，得到一个二进制上: 1表示不同  0表示相同的 10进制数
+     *通过奇偶关系递归数据个数
+     */
+    function fn(preNumb, lastNumb) {
+        return dealFn(preNumb ^ lastNumb)
+    }
+
+    function dealFn(n) {
+        if (n <= 2) return 1;
+        return n & 1 == 1 ? dealFn(n - 1) + 1 : dealFn(n >> 1);
+    }
+    console.log(fn(33, 10));
+</script>
+
+</html>
